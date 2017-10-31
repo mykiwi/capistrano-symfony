@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  staging:
+    build: ./docker/staging
+
+  capistrano:
+    build: ./docker/capistrano
+    working_dir: /srv
+    volumes:
+      - capistrano:/usr/local/bundle
+      - .:/srv
+      - ~/.ssh:/home/.ssh
+
+volumes:
+  capistrano: ~
